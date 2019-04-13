@@ -6,22 +6,23 @@ import requests
 import csv
 
 url = "https://api.thingspeak.com/channels/752531/fields/1.json?results=19"
-r = requests.get(url)
+r = ''
 
-def getStartingIndex():
+def getStartingIndex(r):
     for each in r.json()['feeds']:
         if each['field1'] == "0.00000":
             return each['entry_id']
 
-def returnFieldValue(idvalue):
+def returnFieldValue(idvalue,r):
     for each in r.json()['feeds']:
         if each['entry_id'] == idvalue:
             return each['field1']
 
 def getNWavelength(n):
-    entryID_0 = getStartingIndex()
+    r = requests.get(url)
+    entryID_0 = getStartingIndex(r)
     new_id = n + int(entryID_0)
-    wavelenght = returnFieldValue(new_id)
+    wavelenght = returnFieldValue(new_id,r)
     return wavelenght
 
 def getcolor():
@@ -34,7 +35,7 @@ def getcolor():
     #     color = ""
     #     item = float(mylist[4])*100
     print(getNWavelength(5))
-    wave = int(float(getNWavelength(5)))
+    wave = int(float(getNWavelength(5))*100)
     print(str(wave))
     color = ""
     #print(item)
