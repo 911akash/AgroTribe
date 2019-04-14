@@ -34,16 +34,16 @@ def getcolor():
     #     print(mylist)
     #     color = ""
     #     item = float(mylist[4])*100
-    print(getNWavelength(5))
+    print(getNWavelength(2))
     wave = int(float(getNWavelength(5))*100)
     print(str(wave))
     color = ""
     #print(item)
-    if wave in range(1, 200):
+    if wave in range(1, 400):
         color = "red"
-    if wave in range(200, 350):
+    if wave in range(400, 800):
         color = "orange"
-    if wave in range(350, 600):
+    if wave in range(800, 1400):
         color = "green"
 
     return color
@@ -58,11 +58,11 @@ def drawCircle(colour):
     t.circle(100)
     text = ""
     if colour == "red":
-        text = "Shelf life is 3 days"
+        text = "Red Tomato: Shelf life is 3 days"
     if colour == "green":
-        text = "Shelf life is 7 days"
+        text = "Green Tomato: Shelf life is 7 days"
     if colour == "orange":
-        text = "Shelf life is 5 days"
+        text = "Orange Tomato: Shelf life is 5 days"
     t.color(colour)
     t.speed(10)
     t.end_fill()
